@@ -1,0 +1,104 @@
+/* Curve Learn — site-specific additions on top of the template utility CSS */
+
+/* Layout helpers not emitted by the original template build */
+.max-w-3xl { max-width: 48rem; }
+.max-w-4xl { max-width: 56rem; }
+.mt-10 { margin-top: calc(var(--spacing) * 10); }
+.mt-6 { margin-top: calc(var(--spacing) * 6); }
+.pt-32 { padding-top: calc(var(--spacing) * 32); }
+.pt-36 { padding-top: calc(var(--spacing) * 36); }
+.list-disc { list-style-type: disc; padding-left: 1.25rem; }
+.list-decimal { list-style-type: decimal; padding-left: 1.25rem; }
+.space-y-2 > * + * { margin-top: calc(var(--spacing) * 2); }
+.space-y-3 > * + * { margin-top: calc(var(--spacing) * 3); }
+.space-y-4 > * + * { margin-top: calc(var(--spacing) * 4); }
+.space-y-6 > * + * { margin-top: calc(var(--spacing) * 6); }
+@media (min-width: 48rem) {
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+a.text-link { text-decoration: underline; text-underline-offset: 3px; }
+a.text-link:hover { opacity: 0.75; }
+
+/* Prose blocks for long-form pages */
+.prose p, .prose li { line-height: 1.65; }
+.prose h2 { font-size: var(--text-3xl); font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; }
+.prose h3 { font-size: var(--text-xl); font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.prose p { margin-bottom: 1rem; }
+.prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+.prose ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+.prose li { margin-bottom: 0.35rem; }
+.prose a { text-decoration: underline; text-underline-offset: 3px; }
+.prose a:hover { opacity: 0.75; }
+
+/* Navbar dropdown menu */
+.nav-menu { display: none; }
+.nav-menu.open { display: block; }
+.nav-menu a { display: block; padding: 0.6rem 0.75rem; border-radius: var(--radius); font-size: var(--text-base); }
+.nav-menu a:hover, .nav-menu a[aria-current="page"] { background: color-mix(in srgb, var(--color-foreground) 8%, transparent); }
+.nav-toggle .lucide { transition: transform 0.3s ease; }
+.nav-toggle[aria-expanded="true"] .lucide { transform: rotate(45deg); }
+
+/* FAQ accordion */
+.faq-answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
+.faq-answer > div { overflow: hidden; }
+.faq-item[data-open="true"] .faq-answer { grid-template-rows: 1fr; }
+.faq-item .faq-icon { transition: transform 0.3s ease; }
+.faq-item[data-open="true"] .faq-icon { transform: rotate(45deg); }
+
+/* Forms */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in srgb, var(--color-foreground) 20%, transparent);
+  background: color-mix(in srgb, var(--color-foreground) 4%, transparent);
+  color: var(--color-foreground);
+  font-family: inherit;
+  font-size: var(--text-base);
+}
+.form-input:focus { outline: 2px solid var(--color-primary-cta); outline-offset: 1px; }
+.form-label { display: block; font-size: var(--text-sm); margin-bottom: 0.35rem; opacity: 0.8; }
+
+/* Cookie consent banner */
+.cookie-banner {
+  position: fixed;
+  z-index: 2000;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  width: min(92vw, 40rem);
+  display: none;
+}
+.cookie-banner.visible { display: block; }
+
+/* Notice / disclaimer blocks */
+.notice {
+  border-left: 3px solid var(--color-primary-cta);
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--color-foreground) 5%, transparent);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+/* News filter buttons */
+.filter-btn { opacity: 0.6; }
+.filter-btn.active, .filter-btn:hover { opacity: 1; }
+
+/* Accessibility: visible focus for interactive elements */
+.primary-button:focus-visible, .secondary-button:focus-visible, a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--color-primary-cta);
+  outline-offset: 2px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 3000;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+}
+.skip-link:focus { left: 0.5rem; top: 0.5rem; }
